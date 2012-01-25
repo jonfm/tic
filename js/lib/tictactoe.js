@@ -6,30 +6,36 @@ define(
 
         // construct for the pseudo-object
         function init () {
-
-            var board = [];
+            // instance state
             var last_move;
             var win;
-            function init () {
-                last_move = false;
-                win = false;
+            var board = [];
+
+            // generic iterator
+            function iterate_board ( fun ) {
                 for (x in [0, 1, 2]) {
                     for (y in [0, 1, 2]) {
-                        if (typeof board[x] === "undefined") board[x] = [];
-                        board[x][y] = { val: 0 };
-                    }
-                }
-                for (x in [0, 1, 2]) {
-                    for (y in [0, 1, 2]) {
-                        board[x][y].links = [
-                            board[(x == 0 ? 3 : x) - 1][y], // horizontal
-                            board[(x == 0 ? 3 : x) - 1][(y == 0 ? 3 : y) - 1], // diagonal
-                            board[x][(y == 0 ? 3 : y) - 1] // vertical
-                        ];
+                        fun(board, x, y);
                     }
                 }
             }
-            init();
+
+            function init () {
+                //initialize the board spaces
+                iterate_board( function (board, x, y) {
+                    if (typeof board[x] === "undefined") board[x] = [];
+                    board[x][y] = { val: 0 };
+                });
+
+                //iterate over the board adding links for the connections
+                iterate_board( function (board, x, y) {
+                    board[x][y].links = [
+                        board[(x == 0 ? 3 : x) - 1][y], // horizontal
+                        board[(x == 0 ? 3 : x) - 1][(y == 0 ? 3 : y) - 1], // diagonal
+                        board[x][(y == 0 ? 3 : y) - 1] // vertical
+                    ];
+                });
+            }
 
             // render a template stored in board
             function render_board ( selector ) {
@@ -75,14 +81,13 @@ define(
             function stalemate () {
                 if (winner()) return false;
                 var moves_possible;
-                for (x in [0, 1, 2]) {
-                    for (y in [0, 1, 2]) {
-                        if (!board[x][y].val) moves_possible += 1;
-                    }
-                }
+                iterate_board( function (board, x, y) {
+                    if (!board[x][y].val) moves_possible += 1;
+                });
                 return moves_possible ? false : true;
             }
 
+            init();
             return {
                 render_board: render_board,
                 move:         move,
