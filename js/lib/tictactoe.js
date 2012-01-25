@@ -20,7 +20,7 @@ define(
                 }
             }
 
-            function init () {
+            function init_board () {
                 //initialize the board spaces
                 iterate_board( function (board, x, y) {
                     if (typeof board[x] === "undefined") board[x] = [];
@@ -87,7 +87,8 @@ define(
                 return moves_possible == 0 ? true : false;
             }
 
-            init();
+            init_board();
+
             return {
                 render_board: render_board,
                 move:         move,
