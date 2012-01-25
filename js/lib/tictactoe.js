@@ -75,8 +75,7 @@ define(
             return {
                 render_board: render_board,
                 move:         move,
-                winner:       winner,
-                init:         init
+                winner:       winner
             };
         }
         return init;
