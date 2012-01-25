@@ -13,8 +13,8 @@ define(
 
             // generic iterator
             function iterate_board ( fun ) {
-                for (x in [0, 1, 2]) {
-                    for (y in [0, 1, 2]) {
+                for (var x in [0, 1, 2]) {
+                    for (var y in [0, 1, 2]) {
                         fun(board, x, y);
                     }
                 }
@@ -62,7 +62,7 @@ define(
                    any of the three directions. Conveniently our board has the wrap-
                    around links property to make this check convenient.
                 */
-                for (dir in [0, 1, 2]) { //horizontal, diagonal, vertical
+                for (var dir in [0, 1, 2]) { //horizontal, diagonal, vertical
                     if (
                         board[ pos[0] ][ pos[1] ].links[dir].val == xo
                         && board[ pos[0] ][ pos[1] ].links[dir].links[dir].val == xo
