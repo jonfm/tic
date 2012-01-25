@@ -80,11 +80,11 @@ define(
 
             function stalemate () {
                 if (winner()) return false;
-                var moves_possible;
+                var moves_possible = 0;
                 iterate_board( function (board, x, y) {
-                    if (!board[x][y].val) moves_possible += 1;
+                    if ( !board[x][y].val ) moves_possible += 1;
                 });
-                return moves_possible ? false : true;
+                return moves_possible == 0 ? true : false;
             }
 
             init();

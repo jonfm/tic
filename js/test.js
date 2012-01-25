@@ -36,6 +36,7 @@ define(
             ok( game.move("x", [1,0]), "placed x" );
             ok( game.move("o", [1,2]), "placed o" );
             ok( game.move("x", [2,2]), "placed x" );
+            ok( !game.stalemate(), "not a draw yet" );
             ok( game.move("o", [2,0]), "placed o" );
 
             ok( !game.winner(), "no winner" );
