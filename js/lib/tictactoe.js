@@ -22,9 +22,9 @@ define(
                 for (x in [0, 1, 2]) {
                     for (y in [0, 1, 2]) {
                         board[x][y].links = [
-                            board[(x == 0 ? 3 : x) - 1][y], // west
-                            board[(x == 0 ? 3 : x) - 1][(y == 0 ? 3 : y) - 1], // south west
-                            board[x][(y == 0 ? 3 : y) - 1] // south
+                            board[(x == 0 ? 3 : x) - 1][y], // horizontal
+                            board[(x == 0 ? 3 : x) - 1][(y == 0 ? 3 : y) - 1], // diagonal
+                            board[x][(y == 0 ? 3 : y) - 1] // vertical
                         ];
                     }
                 }
@@ -56,7 +56,7 @@ define(
                    any of the three directions. Conveniently our board has the wrap-
                    around links property to make this check convenient.
                 */
-                for (dir in [0, 1, 2]) {
+                for (dir in [0, 1, 2]) { //horizontal, diagonal, vertical
                     if (
                         board[ pos[0] ][ pos[1] ].links[dir].val == xo
                         && board[ pos[0] ][ pos[1] ].links[dir].links[dir].val == xo
