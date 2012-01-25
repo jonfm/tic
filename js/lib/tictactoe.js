@@ -72,9 +72,21 @@ define(
                 return win;
             }
 
+            function stalemate () {
+                if (winner()) return false;
+                var moves_possible;
+                for (x in [0, 1, 2]) {
+                    for (y in [0, 1, 2]) {
+                        if (!board[x][y].val) moves_possible += 1;
+                    }
+                }
+                return moves_possible ? false : true;
+            }
+
             return {
                 render_board: render_board,
                 move:         move,
+                stalemate:    stalemate,
                 winner:       winner
             };
         }
