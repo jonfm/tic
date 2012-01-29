@@ -1,0 +1,13 @@
+test =
+
+        process: 1
+
+        start: ->
+
+                process = 2
+
+                console.log process, @process, @
+
+
+test.start()
+

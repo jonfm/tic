@@ -1,0 +1,60 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  background: #fff;
+  color: #000;
+  font-family: Arial,Helvetica;
+  font-size: 1.2em;
+}
+
+a, a:link, a:hover, a:active, a:visited {
+  color: 0000ff;
+  text-decoration: none;
+}
+
+#main {
+  width: 800px;
+  margin: 0px auto;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-weight: normal;
+}
+
+.tic_board {
+  width: 300px;
+  height: 300px;
+  border: 1px solid #000;
+  margin: 0px auto;
+}
+
+.tic_cells {
+}
+.tic_cells a, .tic_cells  a:link, .tic_cells  a:hover, .tic_cells  a:active, .tic_cells  a:visited {
+  padding: 10px;
+  font-style: normal;
+  float: left;
+  display: block;
+  width: 80px;
+  height: 80px;
+  box-shadow: 1px 1px 1px #000;
+  -moz-box-shadow: 1px 1px 1px #000;
+  -webkit-box-shadow: 1px 1px 1px #000;
+}
+.tic_cells span {
+  display: block;
+  float: left;
+  font-size: 1.5em;
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  box-shadow: 1px 1px 1px #000;
+  -moz-box-shadow: 1px 1px 1px #000;
+  -webkit-box-shadow: 1px 1px 1px #000;
+}
+.tic_cells .tic_x {
+  background: #ffcccc;
+}
+.tic_cells .tic_o {
+  background: #ccffcc;
+}
