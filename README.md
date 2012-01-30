@@ -36,3 +36,8 @@ js libraries in public/js are available for both serverside and clientside inclu
                tic.js    <- Tic Tac Toe game logic
                views.js  <- Don.js view templates
 
+## Simple example:
+
+1) Open http://localhost:3000 in two browser windows.
+2) Click "new game" in one, observe the board render in both.
+3) Click squares to make moves in either window, observe new state render in both.
